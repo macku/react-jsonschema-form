@@ -130,7 +130,7 @@ DefaultTemplate.defaultProps = {
 };
 
 function SchemaFieldRender(props) {
-  const { uiSchema, errorSchema, idSchema, name, required, registry } = props;
+  const { uiSchema, rawSchema, errorSchema, idSchema, name, required, registry } = props;
   const {
     definitions,
     fields,
@@ -219,6 +219,7 @@ function SchemaFieldRender(props) {
     formContext,
     fields,
     schema,
+    rawSchema,
     uiSchema,
   };
 

@@ -501,7 +501,7 @@ class ArrayField extends Component {
     } = props;
     const { SchemaField } = this.props.registry.fields;
     const { disabled, readonly, uiSchema } = this.props;
-    const { orderable, removable } = {
+    const { orderable, removable, addLabel, removeLabel, reorderLabel } = {
       orderable: true,
       removable: true,
       ...uiSchema["ui:options"],
@@ -532,6 +532,9 @@ class ArrayField extends Component {
       ),
       className: "array-item",
       disabled,
+      addButtonLabel: addLabel,
+      removeButtonLabel: removeLabel,
+      reorderButtonLabel: reorderLabel,
       hasToolbar: has.toolbar,
       hasMoveUp: has.moveUp,
       hasMoveDown: has.moveDown,
@@ -569,6 +572,9 @@ if (process.env.NODE_ENV !== "production") {
         addable: PropTypes.bool,
         orderable: PropTypes.bool,
         removable: PropTypes.bool,
+          addLabel: PropTypes.string,
+          removeLabel: PropTypes.string,
+          reorderLabel: PropTypes.string,
       }),
     }),
     idSchema: PropTypes.object,
@@ -588,6 +594,16 @@ if (process.env.NODE_ENV !== "production") {
       definitions: PropTypes.object.isRequired,
       formContext: PropTypes.object.isRequired,
     }),
+  };
+
+  ArrayField.defaultProps = {
+    uiSchema: {
+      "ui:options": {
+        addLabel: "Add",
+        removeLabel: "Add",
+        reorderLabel: 'Change order"
+      }
+    }
   };
 }
 
